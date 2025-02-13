@@ -1,0 +1,146 @@
+.email-editor-root {
+    position: relative;
+    cursor: default;
+    outline: none;
+    display: block;
+    outline: 0;
+}
+
+.email-editor-text-bold {
+    font-weight: bold;
+}
+
+.email-editor-text-italic {
+    font-style: italic;
+}
+
+.email-editor-text-underline {
+    text-decoration: underline;
+}
+
+.email-editor-text-strikethrough {
+    text-decoration: line-through;
+}
+
+.email-editor-text-underlineStrikethrough {
+    text-decoration: underline line-through;
+}
+
+
+.email-editor-paragraph {
+    cursor: text;
+}
+
+.email-editor-email-template-root {
+    --content-width: 600px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.email-editor-email-template-root .email-editor-email-template-block {
+    display: flex;
+    flex-direction: column;
+    align-items: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.email-editor-email-template-block {
+    position: relative;
+}
+
+.email-editor-email-template-block::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: calc(100% + 2rem);
+    top: 0;
+    left: -1rem;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.email-editor-email-template-block.hovered::before,
+.email-editor-email-template-block.selected::before {
+    border: 2px solid #0078d4;
+    background: rgb(0 120 212 / 10%);
+}
+
+.email-editor-layout-container {
+    width: 100%;
+    max-width: var(--content-width);
+    min-width: 320px;
+}
+
+.email-editor-text-block div[data-lexical-editor] {
+    width: 100%;
+    padding: 0.5rem;
+    min-height: 50px;
+    border: 1px solid #ccc;
+    margin: 1rem 0;
+    box-sizing: border-box;
+}
+
+.email-editor-layout-container {
+    display: grid;
+    container-type: inline-size;
+}
+
+.editor.mobile .email-editor-email-template-root[data-over-330="true"] .email-editor-email-template-block {
+    padding-right: 0!important;
+    padding-left: 0!important;
+    max-width: 100%!important;
+}
+
+.editor.mobile .email-editor-email-template-root[data-over-330="true"] .email-editor-layout-container {
+    display: flex!important;
+    flex-direction: column;
+}
+
+
+.email-editor-layout-item {
+    position: relative;
+}
+
+.email-editor-layout-item::before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed #ddd;
+    box-sizing: border-box;
+}
+
+.email-editor-layout-item:hover::before,
+.email-editor-layout-item.selected::before,
+.email-editor-layout-item:has(*.hovered)::before {
+    border: 1px dashed #0078d4;
+}
+
+.email-editor-button-link {
+    display: inline-block;
+    margin: 0.5rem 0;
+}
+.email-editor-button-link a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.email-editor-link {
+    color: rgb(33, 111, 219);
+    text-decoration: none;
+}
+
+.email-editor-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
