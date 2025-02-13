@@ -11,6 +11,7 @@ export default defineConfig({
       rollupTypes: true,
     })
   ],
+  base: '/lexical-email-editor/',
   build: {
     lib: {
       entry: './src/index.ts',
