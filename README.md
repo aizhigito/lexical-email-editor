@@ -2,7 +2,7 @@
 
 ## Description
 
-he Lexical Email Editor is a rich-text editor built on top of [lexical](https://github.com/facebook/lexical). It is designed to be a simple, easy-to-use editor that can be used to compose emails.
+Lexical Email Editor is a rich-text editor built on top of [lexical](https://github.com/facebook/lexical). It is designed to be a simple, easy-to-use editor that can be used to compose emails.
 
 ## Demo
 
