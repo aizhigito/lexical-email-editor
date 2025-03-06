@@ -1,51 +1,75 @@
-# React + TypeScript + Vite
+# Lexical Email Editor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+he Lexical Email Editor is a rich-text editor built on top of [lexical](https://github.com/facebook/lexical). It is designed to be a simple, easy-to-use editor that can be used to compose emails.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo
 
-## Expanding the ESLint configuration
+You can try out the editor [here](https://aizhigito.github.io/lexical-email-editor/).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Usage
 
-- Configure the top-level `parserOptions` property like this:
+To use the editor, simply import the `EmailEditor` component and render it in your app.
+```typescript jsx
+import { EmailEditor } from 'lexical-email-editor';
+import 'lexical-email-editor/styles.css';
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+const App = () => {
+    return (
+        <EmailEditor />
+    );
+}
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+To get the content of the editor state, pass ref to the `EmailEditor` component and call the `getContent` method.
+```typescript jsx
+import {EmailEditor, EmailEditorRef} from "lexical-email-editor-react"
+import 'lexical-email-editor/styles.css'
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+const App = () => {
+    const editorRef = useRef<EmailEditorRef>(null)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+  const onSubmit = () => {
+    if (editorRef.current) {
+      const [serializedData, html] = editorRef.current.exportData()
+    }
+  }
+  return (
+    <div>
+      <EmailEditor ref={editorRef}/>
+      <button onClick={onSubmit}>Submit</button>
+    </div>
+  )
+}
 ```
-# lexical-email-editor
+To update the content of the editor, update with the 
+```typescript jsx
+const editorRef = useRef<EmailEditorRef>(null)
+
+const fetchData = async () => {
+  const url = ""
+  try {
+    const res = await fetch(url)
+    if (res.ok) {
+      const data = await res.json()
+      editorRef.current?.updateEditorState(data)
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
+```
+If you want upload to server, you can use the `imageUploadCallback` prop.
+```typescript jsx
+const onImageUpload: UploadCallbackType = (file, result, callback) => {
+  // `file` is the file object, `result` is the base64 string
+  const imageUrl = ''; // Your image URL
+  // Call the callback with the image URL
+  callback(imageUrl);
+}
+
+return (
+  <EmailEditor imageUploadCallback={onImageUpload}/>
+)
+```
