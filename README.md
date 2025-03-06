@@ -22,7 +22,7 @@ const App = () => {
 }
 ```
 
-To get the content of the editor state, pass ref to the `EmailEditor` component and call the `getContent` method.
+To get the content of the editor state, pass ref to the `EmailEditor` component and call the `exportData` method.
 ```typescript jsx
 import {EmailEditor, EmailEditorRef} from "lexical-email-editor-react"
 import 'lexical-email-editor/styles.css'
@@ -43,7 +43,7 @@ const App = () => {
   )
 }
 ```
-To update the content of the editor, update with the 
+To update the content of the editor, update with the `updateEditorState` method.
 ```typescript jsx
 const editorRef = useRef<EmailEditorRef>(null)
 
