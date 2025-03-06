@@ -60,7 +60,7 @@ const fetchData = async () => {
   }
 }
 ```
-If you want upload to server, you can use the `imageUploadCallback` prop.
+If you want to upload images to your server, you can pass a callback function to the `imageUploadCallback` prop. The callback function will be called when an image is uploaded to the editor. The callback function should take three arguments: the file object, the base64 string of the image, and a callback function that should be called with the URL of the uploaded image.
 ```typescript jsx
 const onImageUpload: UploadCallbackType = (file, result, callback) => {
   // `file` is the file object, `result` is the base64 string
