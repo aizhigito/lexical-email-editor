@@ -1,7 +1,7 @@
 {
   "name": "lexical-email-editor-react",
   "private": false,
-  "version": "0.0.3-beta",
+  "version": "0.0.4-beta",
   "main": "dist/lexical-email-editor.js",
   "module": "dist/lexical-email-editor.js",
   "types": "dist/types/index.d.ts",
@@ -27,17 +27,17 @@
     "deploy": "gh-pages -d demo/dist"
   },
   "dependencies": {
-    "@lexical/html": "^0.20.0",
-    "@lexical/link": "^0.20.0",
-    "@lexical/react": "^0.20.0",
-    "@lexical/rich-text": "^0.20.0",
-    "@lexical/selection": "^0.20.0",
-    "@lexical/utils": "^0.20.0",
-    "lexical": "^0.20.0"
+    "@lexical/html": "0.20.0",
+    "@lexical/link": "0.20.0",
+    "@lexical/react": "0.20.0",
+    "@lexical/rich-text": "0.20.0",
+    "@lexical/selection": "0.20.0",
+    "@lexical/utils": "0.20.0",
+    "lexical": "0.20.0"
   },
   "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": ">=18.0.0 <20.0.0",
+    "react-dom": ">=18.0.0 <20.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
